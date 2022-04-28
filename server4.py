@@ -32,12 +32,11 @@ class Game:
         file.close()
         
         self.wordlst = lst
-        
+        self.storage = {}
 
         
     def on_message(self, client, data, msg):
         
-        self.storage = []
         user_word = msg.payload.decode('utf-8')
         self.current_clue = self.server.get_clue(user_word)
         final = Correction(user_word, self.current_clue.clue)
